@@ -33,7 +33,7 @@ const App = () => {
 		let url_starter = "https://";
 		let fullURL = url_starter + inputs.url;
 		//let query = `https://cors-anywhere.herokuapp.com/https://proxy.eidr.org/resolve/${inputs.eidr_id}?type=Full&followAlias=false`;
-		let query = "http://localhost:3001/resolve";
+		let query = "/resolve";
 		callAPI(query).catch(console.error);
 	};
 	const reset = () => {

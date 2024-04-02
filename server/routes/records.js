@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-
+import RecordsController from "../controllers/records.js";
 import { fileURLToPath } from "url";
 
 import eidrDataById from "../data/records.js";
@@ -10,9 +10,7 @@ const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.status(200).json(eidrDataById);
-});
+router.get("/", RecordsController.getRecords);
 
 // router.get('/:giftId', (req, res) => {
 //   res.status(200).sendFile(path.resolve(__dirname, '../public/gift.html'))
