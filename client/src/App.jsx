@@ -17,8 +17,8 @@ const App = () => {
 	const [currentImage, setCurrentImage] = useState(null);
 	const [prevImages, setPrevImages] = useState([]);
 	const [response, setResponse] = useState({});
-	const callAPI = async (query) => {
-		const response = await fetch(query);
+	const callAPI = async (query, requestOptions) => {
+		const response = await fetch(query, requestOptions);
 		const json = await response.json();
 		if (json.url === null) {
 			alert("Oops! Something went wrong with that query, let's try again!");
@@ -27,14 +27,14 @@ const App = () => {
 		}
 	};
 	const makeQuery = () => {
-		let wait_until = "network_idle";
-		let response_type = "json";
-		let fail_on_status = "400%2C404%2C500-511";
-		let url_starter = "https://";
-		let fullURL = url_starter + inputs.url;
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ eidr_id: inputs.eidr_id }),
+		};
 		//let query = `https://cors-anywhere.herokuapp.com/https://proxy.eidr.org/resolve/${inputs.eidr_id}?type=Full&followAlias=false`;
-		let query = "/resolve";
-		callAPI(query).catch(console.error);
+		let query = `http://localhost:3001/api/resolve`;
+		callAPI(query, requestOptions).catch(console.error);
 	};
 	const reset = () => {
 		setInputs({
