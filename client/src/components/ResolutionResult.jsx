@@ -23,7 +23,7 @@ const ResolutionResult = ({ response }) => {
 			} else if (k === "Administrators") {
 				pair.value = `${response[k].Registrant}`;
 			} else if (k === "ExtraObjectMetadata") {
-				pair.value = `${response[k].SeriesInfo.DateRequired} ${response[k].SeriesInfo.EndDate} ${response[k].SeriesInfo.NumberRequired} ${response[k].SeriesInfo.OriginalTitleRequired}`;
+				pair.value = `${response[k]?.SeriesInfo?.DateRequired} ${response[k]?.SeriesInfo?.EndDate} ${response[k]?.SeriesInfo?.NumberRequired} ${response[k]?.SeriesInfo?.OriginalTitleRequired}`;
 			}
 
 			inputs.push(pair);

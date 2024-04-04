@@ -1,9 +1,10 @@
 import express from "express";
 import recordRouter from "./routes/records.js";
 import cors from "cors";
+import xmlparser from "express-xml-bodyparser";
 
 const app = express();
-
+app.use(xmlparser());
 app.use(cors());
 app.use(express.json());
 app.use("/api", recordRouter);

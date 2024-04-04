@@ -11,6 +11,8 @@ const __dirname = path.dirname(__filename);
 const router = express.Router();
 
 router.post("/resolve", RecordsController.getRecordsById);
+router.post("/query", RecordsController.getRecordsByQuery);
+// router.post("/register", RecordsController.createEidrRecord);
 
 // router.get('/:giftId', (req, res) => {
 //   res.status(200).sendFile(path.resolve(__dirname, '../public/gift.html'))
